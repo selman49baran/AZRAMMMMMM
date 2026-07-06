@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Selman & Azra — Sonsuza kadar birlikte">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Selman & Azra">
+  <title>Selman ❤️ Azra</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="password-screen" class="password-screen" aria-hidden="false">
+    <div class="password-bg"></div>
+    <canvas id="password-stars" class="password-stars" aria-hidden="true"></canvas>
+    <canvas id="password-particles" class="password-particles" aria-hidden="true"></canvas>
+    <div id="heart-break" class="heart-break hidden" aria-hidden="true">💔</div>
+    <div class="password-container glass-panel">
+      <div class="password-heart glowing-logo">❤️</div>
+      <h1 class="password-title glow-text">Selman & Azra</h1>
+      <p class="password-subtitle">Bu kalp sadece senin için...</p>
+      <form id="password-form" class="password-form" autocomplete="off">
+        <input type="password" id="password-input" class="password-input" placeholder="Şifreni gir..." maxlength="4" inputmode="numeric" pattern="[0-9]*" aria-label="Şifre">
+        <button type="submit" class="btn btn-primary">Giriş Yap</button>
+      </form>
+      <p id="password-error" class="password-error" role="alert" aria-live="polite"></p>
+    </div>
+    <div id="hearts-explode" class="hearts-explode" aria-hidden="true"></div>
+  </div>
+
+  <div id="main-site" class="main-site hidden" aria-hidden="true">
+
+    <div id="cinematic-overlay" class="cinematic-overlay">
+      <canvas id="intro-particles" class="intro-particles"></canvas>
+      <div class="cinematic-content">
+        <span class="cinematic-heart glowing-logo">❤️</span>
+        <h2 class="cinematic-text glow-text">Selman & Azra</h2>
+        <p class="cinematic-sub">Sonsuza kadar...</p>
+      </div>
+    </div>
+
+    <div id="theme-overlay" class="theme-overlay" aria-hidden="true"></div>
+    <canvas id="stars-canvas" class="stars-canvas" aria-hidden="true"></canvas>
+    <div id="aurora-glow" class="aurora-glow" aria-hidden="true"></div>
+    <canvas id="light-particles" class="light-particles" aria-hidden="true"></canvas>
+    <div id="floating-hearts" class="floating-hearts" aria-hidden="true"></div>
+    <div id="sparkles" class="sparkles" aria-hidden="true"></div>
+    <div id="sakura-container" class="sakura-container" aria-hidden="true"></div>
+    <div id="romantic-rain" class="romantic-rain" aria-hidden="true"></div>
+    <div id="wish-star-sky" class="wish-star-sky" aria-label="Dilek tutmak için dokun"></div>
+    <div id="wish-message" class="wish-message hidden">Dileğin kabul olsun. ✨</div>
+
+    <nav class="navbar glass-panel" id="navbar">
+      <div class="nav-brand">Selman ❤️ Azra</div>
+      <div class="nav-actions">
+        <button id="pwa-install-btn" class="pwa-install-btn hidden" aria-label="Uygulamayı yükle">📲 Yükle</button>
+        <button id="dark-mode-toggle" class="dark-mode-btn" aria-label="Karanlık modu aç/kapat" title="Karanlık Mod">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </nav>
+
+    <header class="hero" id="hero">
+      <div class="hero-bg" id="hero-bg">
+        <img src="assets/photo1.jpg" alt="Selman ve Azra" class="hero-image" loading="eager">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content glass-panel hero-glass">
+        <p class="hero-eyebrow" id="hero-eyebrow"></p>
+        <h1 class="hero-title">
+          <span class="hero-name glow-text" id="hero-name-selman"></span>
+          <span class="hero-heart">❤️</span>
+          <span class="hero-name glow-text" id="hero-name-azra"></span>
+        </h1>
+        <p class="hero-subtitle" id="hero-subtitle"></p>
+        <a href="#timer" class="btn btn-ghost hero-cta">Keşfet</a>
+        <div class="scroll-indicator" aria-hidden="true">
+          <span class="scroll-dot"></span>
+          <span class="scroll-line"></span>
+        </div>
+      </div>
+    </header>
+
+    <section class="section timer-section" id="timer">
+      <div class="container">
+        <h2 class="section-title">Birlikte Geçen Zaman</h2>
+        <p class="section-subtitle">23 Ocak 2026'dan beri</p>
+        <div class="timer-grid" id="relationship-timer">
+          <div class="timer-card glass-panel">
+            <span class="timer-value" id="timer-days" data-target="0">0</span>
+            <span class="timer-label">Gün</span>
+          </div>
+          <div class="timer-card glass-panel">
+            <span class="timer-value" id="timer-hours" data-target="0">0</span>
+            <span class="timer-label">Saat</span>
+          </div>
+          <div class="timer-card glass-panel">
+            <span class="timer-value" id="timer-minutes" data-target="0">0</span>
+            <span class="timer-label">Dakika</span>
+          </div>
+          <div class="timer-card glass-panel">
+            <span class="timer-value" id="timer-seconds" data-target="0">0</span>
+            <span class="timer-label">Saniye</span>
+          </div>
+        </div>
+        <p class="timer-first-message">İlk mesaj: <strong>16 Ocak 2026</strong></p>
+      </div>
+    </section>
+
+    <section class="section love-meter-section" id="love-meter">
+      <div class="container">
+        <h2 class="section-title">Aşk Ölçer</h2>
+        <div class="love-meter glass-panel">
+          <div class="love-meter-bar">
+            <div class="love-meter-fill" id="love-meter-fill"></div>
+            <span class="love-meter-heart">❤️</span>
+          </div>
+          <p class="love-meter-percent" id="love-meter-percent">0%</p>
+          <p class="love-meter-text" id="love-meter-text">Aşkımız sonsuza kadar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section timeline-section" id="timeline">
+      <div class="container">
+        <h2 class="section-title">Zaman Çizelgesi</h2>
+        <div class="timeline">
+          <div class="timeline-item glass-panel">
+            <span class="timeline-icon">❤️</span>
+            <div class="timeline-content">
+              <span class="timeline-date">16.01.2026</span>
+              <span class="timeline-event">İlk mesaj</span>
+            </div>
+          </div>
+          <div class="timeline-item glass-panel">
+            <span class="timeline-icon">❤️</span>
+            <div class="timeline-content">
+              <span class="timeline-date">23.01.2026</span>
+              <span class="timeline-event">İlk buluşma</span>
+            </div>
+          </div>
+          <div class="timeline-item glass-panel">
+            <span class="timeline-icon">❤️</span>
+            <div class="timeline-content">
+              <span class="timeline-date">23.01.2026</span>
+              <span class="timeline-event">İlişkimiz başladı</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+        <h2 class="section-title">Anılarımız</h2>
+        <p class="section-subtitle">Her fotoğraf bir hikaye...</p>
+        <div class="slideshow glass-panel" id="slideshow">
+          <div class="slideshow-track" id="slideshow-track">
+            <img src="assets/photo1.jpg" alt="Anı 1" class="slideshow-img active" data-index="0" loading="lazy">
+            <img src="assets/photo2.jpg" alt="Anı 2" class="slideshow-img" data-index="1" loading="lazy">
+            <img src="assets/photo3.jpg" alt="Anı 3" class="slideshow-img" data-index="2" loading="lazy">
+          </div>
+          <div class="slideshow-dots" id="slideshow-dots"></div>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item glass-panel" data-index="0">
+            <img src="assets/photo1.jpg" alt="Anı 1" loading="lazy">
+            <div class="gallery-overlay"><span>❤️</span></div>
+          </div>
+          <div class="gallery-item glass-panel" data-index="1">
+            <img src="assets/photo2.jpg" alt="Anı 2" loading="lazy">
+            <div class="gallery-overlay"><span>❤️</span></div>
+          </div>
+          <div class="gallery-item glass-panel" data-index="2">
+            <img src="assets/photo3.jpg" alt="Anı 3" loading="lazy">
+            <div class="gallery-overlay"><span>❤️</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="Fotoğraf galerisi">
+      <div class="lightbox-blur" id="lightbox-blur"></div>
+      <button class="lightbox-close" id="lightbox-close" aria-label="Kapat">✕</button>
+      <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Önceki">‹</button>
+      <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Sonraki">›</button>
+      <div class="lightbox-content" id="lightbox-content">
+        <img id="lightbox-image" src="" alt="Galeri fotoğrafı">
+      </div>
+      <div class="lightbox-counter" id="lightbox-counter">1 / 3</div>
+      <div class="filmstrip" id="filmstrip"></div>
+    </div>
+
+    <section class="section letter-section" id="letter">
+      <div class="container">
+        <h2 class="section-title">Sana Bir Mektup</h2>
+        <article class="letter paper-texture glass-panel" id="letter-paper">
+          <p class="letter-greeting">Sevgili Azra'm,</p>
+          <div class="letter-body" id="letter-body">
+            <p>Bu satırları yazarken kalbim senin adınla atıyor. Sen hayatıma girdiğinde, her şeyin bir anlam kazandığını hissettim. Gözlerinde kaybolduğum o ilk anlardan beri, seninle geçirdiğim her saniye bana ne kadar şanslı olduğumu hatırlatıyor.</p>
+            <p>Sen benim sabah güneşimsin, gece yıldızımsın. Sesini duyduğumda dünyam duruyor, gülüşünle her şey aydınlanıyor. Seninle konuşmak, seninle sessiz kalmak, seninle gülmek... Hepsi benim için ayrı bir cennet.</p>
+            <p>Aramızda zor günler oldu — belki hâlâ oluyor. Kırgınlıklar, anlaşmazlıklar, bazen birbirimizi anlayamadığımız anlar... Ama biliyorum ki asla pes etmeyeceğiz. Seninle yan yana olduğumda, hiçbir şeyin bizi ayıramayacağına inanıyorum. Çünkü biz sadece sevgili değiliz; birbirimizin sığınağı, en büyük destekçimiz, en derin sırdaşımızız.</p>
+            <p>Zor günler bizi yıprattı ama aynı zamanda daha da güçlendirdi. Her krizden sonra birbirimize daha sıkı sarıldık. Her gözyaşından sonra daha derin sevdik. Bu zorluklar bizi kırmak için değil, birbirimize daha çok bağlamak için vardı.</p>
+            <p>Geleceğe baktığımda seni görüyorum — güzel bir ev, sıcak bir yuva, birbirimize sarıldığımız sonsuz akşamlar, kahvaltı masasında el ele, pencereden birlikte izlediğimiz gün batımları... Bir gün evleneceğiz, Azra. Kendi evimizi kuracağız. Bu sadece bir hayal değil; bu bizim sözümüz, birlikte yazdığımız hikayemiz.</p>
+            <p>Belki bir gün geriye dönüp bu web sitesine birlikte bakacağız. O gün gülümseyerek okuyacağız bu satırları ve "Ne kadar da haklıymışız" diyeceğiz. Çünkü biz her şeye rağmen birbirimizi seçtik ve seçmeye devam ediyoruz.</p>
+            <p>Ne olursa olsun, seninle olacağım. Zorluklar geçici, ama bizim sevgimiz sonsuza kadar sürecek. Sen benim her şeyimsin, kalbimin tek sahibi, hayatımın en güzel hediyesisin.</p>
+          </div>
+          <p class="letter-closing">
+            Seni çok seviyorum.<br>❤️<br>
+            <span class="letter-signature" id="letter-signature">Selman</span>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section future-letter-section" id="future-letter">
+      <div class="container">
+        <h2 class="section-title">Gelecek Mektubum</h2>
+        <div class="future-letter glass-panel" id="future-letter-box">
+          <div class="future-letter-locked" id="future-letter-locked">
+            <span class="future-lock">🔒</span>
+            <p>Bu mektup <strong>23 Ocak 2027</strong> tarihinde açılacak.</p>
+            <p class="future-countdown" id="future-countdown"></p>
+          </div>
+          <div class="future-letter-content hidden" id="future-letter-content">
+            <p class="letter-greeting">Sevgili Azra'm,</p>
+            <p>Bir yıl geçti... Ve hâlâ seni her gün daha çok seviyorum. Bu mektubu yazdığım günden bugüne, birlikte ne kadar yol katettik. Belki o günler zordu, ama bugün buradayız — el ele, kalp kalbe.</p>
+            <p>Evlenme hayalimiz artık daha yakın. Her geçen gün, seninle kuracağımız hayat daha gerçek oluyor. Sen benim geleceğimsin, Azra.</p>
+            <p>Sonsuza kadar seninle... ❤️</p>
+            <p class="letter-signature">Selman</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wedding-section" id="wedding">
+      <div class="container">
+        <h2 class="section-title">Sonsuza Kadar</h2>
+        <div class="wedding-rings glass-panel" id="wedding-rings">
+          <div class="ring ring-left" id="ring-left">💍</div>
+          <div class="ring ring-right" id="ring-right">💍</div>
+          <p class="wedding-message hidden" id="wedding-message">
+            <span class="wedding-sparkles">✨</span> Sonsuza Kadar <span class="wedding-sparkles">✨</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dates-section" id="dates">
+      <div class="container">
+        <h2 class="section-title">Özel Günlerimiz</h2>
+        <div class="dates-grid">
+          <div class="date-card glass-panel">
+            <span class="date-icon">💌</span>
+            <span class="date-value">16.01.2026</span>
+            <span class="date-label">İlk Mesaj</span>
+          </div>
+          <div class="date-card glass-panel">
+            <span class="date-icon">❤️</span>
+            <span class="date-value">23.01.2026</span>
+            <span class="date-label">İlişkimiz Başladı</span>
+          </div>
+          <div class="date-card glass-panel birthday-card" id="selman-birthday">
+            <span class="date-icon">🎂</span>
+            <span class="date-value">13 Şubat</span>
+            <span class="date-label">Selman'ın Doğum Günü</span>
+            <span class="birthday-countdown" id="selman-countdown"></span>
+          </div>
+          <div class="date-card glass-panel birthday-card" id="azra-birthday">
+            <span class="date-icon">🎂</span>
+            <span class="date-value">30 Aralık</span>
+            <span class="date-label">Azra'nın Doğum Günü</span>
+            <span class="birthday-countdown" id="azra-countdown"></span>
+          </div>
+        </div>
+        <div id="birthday-celebration" class="birthday-celebration hidden"></div>
+      </div>
+    </section>
+
+    <section class="section map-section" id="memory-map">
+      <div class="container">
+        <h2 class="section-title">Anı Haritamız</h2>
+        <p class="section-subtitle">Birlikte keşfettiğimiz yerler</p>
+        <div class="memory-map glass-panel" id="memory-map-canvas">
+          <svg class="map-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1a1a2e"/>
+                <stop offset="100%" style="stop-color:#0a0a0a"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="400" fill="url(#mapGrad)" rx="16"/>
+            <path id="map-route" class="map-route" d="" fill="none" stroke="#ff2d75" stroke-width="2" stroke-dasharray="8 4"/>
+            <g id="map-pins"></g>
+          </svg>
+          <div class="map-controls">
+            <input type="text" id="map-place-input" class="map-input" placeholder="Yer adı ekle..." maxlength="30">
+            <button id="map-add-btn" class="btn btn-primary btn-sm">📍 Ekle</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section game-section" id="game">
+      <div class="container">
+        <h2 class="section-title">Beni Ne Kadar Tanıyorsun?</h2>
+        <div class="game-card glass-panel" id="game-card">
+          <div id="game-questions">
+            <p class="game-question" id="game-question"></p>
+            <div class="game-options" id="game-options"></div>
+            <p class="game-progress" id="game-progress"></p>
+          </div>
+          <div id="game-winner" class="game-winner hidden">
+            <span class="game-winner-heart">❤️</span>
+            <p>Sen beni gerçekten tanıyorsun.</p>
+            <span class="game-winner-heart">❤️</span>
+          </div>
+          <button id="game-start" class="btn btn-primary">Başla</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section languages-section" id="languages">
+      <div class="container">
+        <h2 class="section-title">100 Dilde Seni Seviyorum</h2>
+        <button id="languages-btn" class="btn btn-primary languages-btn">Seni Seviyorum</button>
+        <div class="languages-display glass-panel" id="languages-display">
+          <span class="languages-text" id="languages-text">Türkçe — Seni seviyorum</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section music-section" id="music">
+      <div class="container">
+        <div class="music-card glass-panel">
+          <div class="music-icon">🎵</div>
+          <h3 class="music-title">Bir Kış Masalı</h3>
+          <p class="music-desc">Bizim şarkımız...</p>
+          <a href="https://www.youtube.com/results?search_query=Bir+Kış+Masalı" target="_blank" rel="noopener noreferrer" class="btn btn-primary music-btn">YouTube'da Dinle</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surprise-section" id="surprise">
+      <div class="container">
+        <button id="surprise-btn" class="btn btn-surprise">❤️ Bana Bas ❤️</button>
+      </div>
+    </section>
+
+    <div id="surprise-overlay" class="surprise-overlay hidden" aria-hidden="true">
+      <canvas id="fireworks-canvas" class="fireworks-canvas"></canvas>
+      <div id="confetti-container" class="confetti-container"></div>
+      <div id="roses-container" class="roses-container"></div>
+      <div id="heart-rain" class="heart-rain"></div>
+      <div class="surprise-message">
+        <span class="surprise-name">Selman</span>
+        <span class="surprise-heart">❤️</span>
+        <span class="surprise-name">Azra</span>
+        <span class="surprise-infinity">∞</span>
+        <p class="surprise-forever">Sonsuza Kadar</p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Selman ❤️ Azra — Sonsuza kadar</p>
+      <p class="footer-year">2026</p>
+    </footer>
+  </div>
+
+  <div id="dark-transition" class="dark-transition" aria-hidden="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>
